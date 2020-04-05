@@ -1,20 +1,20 @@
-Initialiser personnage
-Initialiser entités secondaire (tableau)	
-Gestion de vie et score	
+Initialiser personnage ( Sofien ) 
+Initialiser entités secondaire (tableau)	( Sofien ) 
+Gestion de vie et score	( Farouk ) 
 Afficher les entités secondaires	
-Initialiser Énigmes	
-Afficher Enigmes
+Initialiser Énigmes ( Amin ) 
+Afficher Enigmes ( Amin ) 
 Déplacer personnage moyennant le clavier	
-Afficher Personnage	
-Détection de collision entre deux entités en mouvement: Bounding box	
-Détection de collision entre un personnage et le background (perfect pixel)	
-Gestion de temps dans le jeu et dans l'énigme	
-Résolution Énigme	
-Intégration
-Scrolling (verticale et/ou horizontale)	
-Animation Personnage (à gauche et à droite)	
+Afficher Personnage	( Farouk ) 
+Détection de collision entre deux entités en mouvement: Bounding box ( Elloumi ) 
+Détection de collision entre un personnage et le background (perfect pixel) ( Elloumi ) 	
+Gestion de temps dans le jeu et dans l'énigme	( Farouk ) 
+Résolution Énigme	( Amin ) 
+Intégration ( Elloumi ) 	
+Scrolling (verticale et/ou horizontale)	( Farouk ) 
+Animation Personnage (à gauche et à droite)	( Sofien ) 
 Déplacer aléatoirement une entité secondaire	
 Déplacer Personnage moyennant la souris	
 Animation entité secondaire (à gauche et à droite)	
-Génération aléatoire de l'Énigme (avec ou sans fichier)	
-Génération automatique d'une réponse à l'énigme ( si sans fichier )	
+Génération aléatoire de l'Énigme (avec ou sans fichier)	( Amin ) 
+Génération automatique d'une réponse à l'énigme ( si sans fichier )	( Amin ) 
