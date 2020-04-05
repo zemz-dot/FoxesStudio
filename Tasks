@@ -1,0 +1,20 @@
+Initialiser personnage
+Initialiser entités secondaire (tableau)	
+Gestion de vie et score	
+Afficher les entités secondaires	
+Initialiser Énigmes	
+Afficher Enigmes
+Déplacer personnage moyennant le clavier	
+Afficher Personnage	
+Détection de collision entre deux entités en mouvement: Bounding box	
+Détection de collision entre un personnage et le background (perfect pixel)	
+Gestion de temps dans le jeu et dans l'énigme	
+Résolution Énigme	
+Intégration
+Scrolling (verticale et/ou horizontale)	
+Animation Personnage (à gauche et à droite)	
+Déplacer aléatoirement une entité secondaire	
+Déplacer Personnage moyennant la souris	
+Animation entité secondaire (à gauche et à droite)	
+Génération aléatoire de l'Énigme (avec ou sans fichier)	
+Génération automatique d'une réponse à l'énigme ( si sans fichier )	
