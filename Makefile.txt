@@ -1,9 +1,0 @@
-
-*************************************************
-    Amin Hlel 1A15
-
- enigmes.o: enigmes.c
- gcc -c enigmes.c -g -lSDL -lSDL_image -lSDL_ttf
-
-
-*************************************************
