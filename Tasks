@@ -8,7 +8,7 @@ Déplacer personnage moyennant le clavier
 Afficher Personnage	( Farouk ) 
 Détection de collision entre deux entités en mouvement: Bounding box ( Elloumi ) 
 Détection de collision entre un personnage et le background (perfect pixel) ( Elloumi ) 	
-Gestion de temps dans le jeu et dans l'énigme	( Farouk ) 
+Gestion de temps dans le jeu et dans l'énigme	(  ) 
 Résolution Énigme	( Amin ) 
 Intégration ( Elloumi ) 	
 Scrolling (verticale et/ou horizontale)	( Farouk ) 
