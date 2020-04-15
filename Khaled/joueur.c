@@ -8,8 +8,8 @@ char nomFich[22];
 int i;
 for(i=0;i<=21;i++)
 {
-    sprintf(nomFich,"esm dossier eli fih tsawer personnage/%d.png",i);
-    p->tab[i]=IMG_Load(nomFich);
+    sprintf(nomFich,"*******/%d.png",i);
+    p->tab[i]=IMG_Load(*******);
 }
 p->position_actuel=11;
 p->time=0;
