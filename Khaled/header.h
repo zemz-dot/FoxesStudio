@@ -9,13 +9,10 @@
 #include <string.h>
 #include <math.h>
 
-
 #define TEMPS 30
 #define FPS 60
 
 //****** HEAD STRUCTURE *******
-
-
 
 typedef struct PERSO_PRINCIPALE
 {
@@ -32,25 +29,11 @@ typedef struct PERSO_PRINCIPALE
 	int objective; 
 }PERSO_PRINCIPALE;
 
-
-
-
-
 //****** HEAD PERSONAGE *******
-
 
 void init_persoP(PERSO_PRINCIPALE *p);
 void afficher_personnageP(PERSO_PRINCIPALE *perso,SDL_Surface *fenetre);
 void deplacement_clavier(PERSO_PRINCIPALE *perso,int sens,int bg);
 void animer_clavier(PERSO_PRINCIPALE * perso,int sens);
-
-
-
-
-
-
-
-
-
 
 #endif
