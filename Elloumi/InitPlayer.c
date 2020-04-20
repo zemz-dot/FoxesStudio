@@ -1,10 +1,8 @@
    void initializePlayer(void)
   {
 
-    /* Charge le sprite de notre héros */
     player.sprite = loadImage("graphics/walkright.png");
 
-    //Indique l'état et la direction de notre héros
     player.direction = RIGHT,LEFT,UP,DOWN;
     player.etat = WALK;
 
