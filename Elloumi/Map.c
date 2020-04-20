@@ -3,9 +3,7 @@
 
     int i, x1, x2, y1, y2;
 
-    /* D'abord, on place le joueur en l'air jusqu'à temps d'être sûr qu'il touche le sol */
-
-    entity->onGround = 0;
+  
 
 
     if(entity->h > TILE_SIZE)
