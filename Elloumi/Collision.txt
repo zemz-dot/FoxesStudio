@@ -1,0 +1,22 @@
+  //Fonction de gestion des collisions
+   int collide(GameObject *player, GameObject *boxes)
+ {
+    //On teste pour voir s'il n'y a pas collision, si c'est le cas, on renvoie 0
+    if ((player->x >= boxes->x + boxes->w)
+    || (player->x + player->w <= boxes->x)
+    || (player->y >= boxes->y + boxes->h)
+    || (player->y + player->h <= boxes->y)
+    )
+        return 0;
+    //Sinon, il y a collision. Si le joueur est au-dessus du monstre (avec une marge
+    //de 10 pixels pour éviter les frustrations dues au pixel perfect), on renvoie 2.
+    //On devra alors tuer le monstre et on fera rebondir le joueur.
+    else if (player->y + player->h <= boxes->y )
+    {
+        player->dirY = 0;
+	player->dirX = 0;
+        return 1;
+    }
+   
+}
+         
