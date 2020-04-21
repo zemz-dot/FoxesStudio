@@ -1,62 +1,42 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<CodeBlocks_project_file>
-	<FileVersion major="1" minor="6" />
-	<Project>
-		<Option title="main.c" />
-		<Option pch_mode="2" />
-		<Option compiler="gcc" />
-		<Build>
-			<Target title="Debug">
-				<Option output="bin/Debug/main.c" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-g" />
-				</Compiler>
-			</Target>
-			<Target title="Release">
-				<Option output="bin/Release/main.c" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
-				<Option type="0" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-O2" />
-				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
-			</Target>
-		</Build>
-		<Compiler>
-			<Add option="-Wall" />
-			<Add directory="C:/Program Files (x86)/CodeBlocks/SDL-1.2.15/include" />
-		</Compiler>
-		<Linker>
-			<Add library="mingw32" />
-			<Add library="SDLmain" />
-			<Add library="SDL.dll" />
-			<Add library="user32" />
-			<Add library="gdi32" />
-			<Add library="winmm" />
-			<Add library="dxguid" />
-			<Add directory="C:/Program Files (x86)/CodeBlocks/SDL-1.2.15/lib" />
-		</Linker>
-		<Unit filename="../main.h" />
-		<Unit filename="cb.bmp" />
-		<Unit filename="input.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="input.h" />
-		<Unit filename="main.cpp" />
-		<Unit filename="map.c">
-			<Option compilerVar="CC" />
-			<Option target="Debug" />
-		</Unit>
-		<Extensions>
-			<code_completion />
-			<envvars />
-			<debugger />
-		</Extensions>
-	</Project>
-</CodeBlocks_project_file>
+
+    #include "main.h"
+
+    int main( int argc, char *argv[ ] )
+   {
+    unsigned int frameLimit = SDL_GetTicks() + 16;
+    int go;
+
+    /* Initialisation de la SDL dans une fonction séparée (voir après) */
+        init("Aron");
+
+   /* Appelle la fonction cleanup à la fin du programme */
+         atexit(cleanup);
+
+    go = 1;
+
+
+    /* Boucle infinie, principale, du jeu */
+
+    while (go == 1)
+    {
+
+        /* On vérifie l'état des entrées (clavier puis plus tard joystick) */
+        getInput();
+
+        /* On met à jour le jeu */
+        update();
+
+        /* On affiche tout */
+        draw();
+
+        /* Gestion des 60 fps ( 60 images pas seconde : soit 1s ->1000ms/60 = 16.6 -> 16
+        On doit donc attendre 16 ms entre chaque image (frame) */
+        delay(frameLimit);
+        frameLimit = SDL_GetTicks() + 16;
+
+    }
+
+    /* Exit */
+    exit(0);
+
+    }
