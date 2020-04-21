@@ -177,11 +177,7 @@ void updatePlayer(void)
     // La gravité fait toujours tomber le perso : on incrémente donc le vecteur Y
 	player.dirY += GRAVITY_SPEED;
 
-    //Mais on le limite pour ne pas que le joueur se mette à tomber trop vite quand même
-	if (player.dirY >= MAX_FALL_SPEED)
-	{
-		player.dirY = MAX_FALL_SPEED;
-	}
+  
 
     //Voilà, au lieu de changer directement les coordonnées du joueur, on passe par un vecteur
     //qui sera utilisé par la fonction mapCollision(), qui regardera si on peut ou pas déplacer
@@ -211,19 +207,10 @@ void updatePlayer(void)
 
     }
 
-    //Et voici la fonction de saut très simple :
-    //Si on appuie sur la touche saut et qu'on est sur le sol, alors on attribue une valeur
-    //négative au vecteur Y
-    //parce que sauter veut dire se rapprocher du haut de l'écran et donc de y=0.
-    if (input.jump == 1 && player.onGround)
-	{
-		player.dirY = -JUMP_HEIGHT;
-		player.onGround = 0;
-
-	}
+ 
 
     //On rajoute notre fonction de détection des collisions qui va mettre à jour les coordonnées
-    //de notre super lapin, puis on centre le scrolling comme avant.
+  
     mapCollision(&player);
     centerScrollingOnPlayer();
 
