@@ -159,6 +159,91 @@ void mapCollision(Hero *entity)
 
   
 }
+void updatePlayer(void)
+{
 
+ 
+   //Si le timer vaut 0, c'est que tout va bien, sinon, on le décrémente jusqu'à 0, et là,
+   //on réinitialise.
+   //C'est pour ça qu'on ne gère le joueur que si ce timer vaut 0.
+  if (player.timerMort == 0)
+  {
+
+    //On réinitialise notre vecteur de déplacement latéral (X)
+
+   
+	player.dirX = 0;
+
+    // La gravité fait toujours tomber le perso : on incrémente donc le vecteur Y
+	player.dirY += GRAVITY_SPEED;
+
+    //Mais on le limite pour ne pas que le joueur se mette à tomber trop vite quand même
+	if (player.dirY >= MAX_FALL_SPEED)
+	{
+		player.dirY = MAX_FALL_SPEED;
+	}
+
+    //Voilà, au lieu de changer directement les coordonnées du joueur, on passe par un vecteur
+    //qui sera utilisé par la fonction mapCollision(), qui regardera si on peut ou pas déplacer
+    //le joueur selon ce vecteur et changera les coordonnées du player en fonction.
+ 	if (input.left == 1)
+	{
+		player.dirX -= PLAYER_SPEED;
+
+        //On teste le sens pour l'animation : si le joueur allait dans le sens contraire
+        //précédemment, il faut recharger le spritesheet pour l'animation.
+		if(player.direction == RIGHT)
+		{
+		    player.direction = LEFT;
+		    player.sprite = loadImage("graphics/walkleft.png");
+		}
+	}
+
+	else if (input.right == 1)
+	{
+		player.dirX += PLAYER_SPEED;
+
+		if(player.direction == LEFT)
+		{
+		    player.direction =  RIGHT;
+		    player.sprite = loadImage("graphics/walkright.png");
+		}
+
+    }
+
+    //Et voici la fonction de saut très simple :
+    //Si on appuie sur la touche saut et qu'on est sur le sol, alors on attribue une valeur
+    //négative au vecteur Y
+    //parce que sauter veut dire se rapprocher du haut de l'écran et donc de y=0.
+    if (input.jump == 1 && player.onGround)
+	{
+		player.dirY = -JUMP_HEIGHT;
+		player.onGround = 0;
+
+	}
+
+    //On rajoute notre fonction de détection des collisions qui va mettre à jour les coordonnées
+    //de notre super lapin, puis on centre le scrolling comme avant.
+    mapCollision(&player);
+    centerScrollingOnPlayer();
+
+  }
+
+    //Gestion de l'echec  quand le héros fait un erreur :
+    //Si timerMort est différent de 0, c'est qu'il faut réinitialiser le joueur.
+    //On ignore alors ce qui précède et on joue cette boucle (un wait en fait) jusqu'à ce que
+    // timerMort == 1. A ce moment-là, on le décrémente encore -> il vaut 0 et on réinitialise
+    if (player.timerMort > 0)
+	{
+		player.timerMort--;
+
+		if (player.timerMort == 0)
+		{
+			//si le joueur fait un erreur 
+			initializePlayer();
+		}
+	}
+
+}
  
  
