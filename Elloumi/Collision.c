@@ -1,4 +1,5 @@
   //Fonction de gestion des collisions
+ #include "Collision.h"
    int collide(GameObject *player, GameObject *boxes)
  {
     if ((player->x >= boxes->x + boxes->w)
