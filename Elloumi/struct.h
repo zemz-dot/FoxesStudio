@@ -1,16 +1,16 @@
 #include "defs.h"
 
-/* Structures qui seront utilisées pour gérer le jeu */
+// Structures qui seront utilisées pour gérer le jeu 
 
-/* Structure pour gérer l'input (clavier puis joystick) */
+/ Structure pour gérer l'input
 
 typedef struct Input
 {
-	int left, right, up, down, jump, attack, enter, erase, pause;
+	int left, right, up, down, hold, pause;
 } Input;
 
 
-/* Structure pour gérer le niveau (à compléter plus tard) */
+// Structure pour gérer le niveau  
 
 typedef struct Gestion
 {
@@ -20,8 +20,8 @@ typedef struct Gestion
     int level;
 
     //HUD
-	SDL_Surface *HUD_vie, *HUD_etoiles;
-    int vies, etoiles;
+	SDL_Surface *HUD_scores;
+    int scores;
 
     //Sons
     Mix_Music  *musique;
@@ -36,7 +36,7 @@ typedef struct Gestion
 } Gestion;
 
 
-/* Structure pour gérer la map à afficher (à compléter plus tard) */
+// Structure pour gérer la map à afficher 
 
 typedef struct Map
 {
@@ -80,8 +80,6 @@ typedef struct GameObject
 	float dirX, dirY;
 	int saveX, saveY;
 
-	//Variable pour le double saut
-	int jump;
 
 
 
