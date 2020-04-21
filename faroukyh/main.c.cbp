@@ -1,67 +1,49 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<CodeBlocks_project_file>
-	<FileVersion major="1" minor="6" />
-	<Project>
-		<Option title="main.c" />
-		<Option pch_mode="2" />
-		<Option compiler="gcc" />
-		<Build>
-			<Target title="Debug">
-				<Option output="bin/Debug/main.c" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-g" />
-				</Compiler>
-			</Target>
-			<Target title="Release">
-				<Option output="bin/Release/main.c" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
-				<Option type="0" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-O2" />
-				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
-			</Target>
-		</Build>
-		<Compiler>
-			<Add option="-Wall" />
-			<Add directory="C:/Program Files (x86)/CodeBlocks/SDL-1.2.15/include" />
-		</Compiler>
-		<Linker>
-			<Add library="mingw32" />
-			<Add library="SDLmain" />
-			<Add library="SDL.dll" />
-			<Add library="user32" />
-			<Add library="gdi32" />
-			<Add library="winmm" />
-			<Add library="dxguid" />
-			<Add directory="C:/Program Files (x86)/CodeBlocks/SDL-1.2.15/lib" />
-		</Linker>
-		<Unit filename="DRAW.H" />
-		<Unit filename="Personnage.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="cb.bmp" />
-		<Unit filename="defs.h" />
-		<Unit filename="draw.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="main.cpp" />
-		<Unit filename="main.h" />
-		<Unit filename="player.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="player.h" />
-		<Unit filename="structs.h" />
-		<Extensions>
-			<code_completion />
-			<envvars />
-			<debugger />
-		</Extensions>
-	</Project>
-</CodeBlocks_project_file>
+//mettre ajour notre mainen rajoutant la fonction initializeplayer()
+ #include "main.h"
+
+
+   int main(int argc, char *argv[])
+  {
+    unsigned int frameLimit = SDL_GetTicks() + 16;
+    int go;
+
+     // Initialisation de la SDL //
+    init("Aron");
+
+     // On initialise le joueur //
+     initializePlayer();//voila c que on ajoute
+
+    //Chargement des ressources (graphismes, sons) //
+    loadGame();
+
+    // Appelle la fonction cleanup à la fin du programme //
+
+    atexit(cleanup);
+
+    go = 1;
+
+
+    // Boucle infinie, principale, du jeu
+
+    while (go == 1)
+    {
+
+        //On prend on compte les input (clavier, joystick...
+        getInput();
+
+        //On met à jour le jeu
+        update();
+
+        // On affiche tout
+        draw();
+
+        // Gestion des 60 fps (1000ms/60 = 16.6 -> 16 //
+        delay(frameLimit);
+        frameLimit = SDL_GetTicks() + 16;
+
+    }
+
+    // Exit //
+
+    exit(0);
+  }
