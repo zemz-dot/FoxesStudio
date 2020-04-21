@@ -1,4 +1,5 @@
-  void mapCollision(Hero *entity)
+#include "map.h"  
+void mapCollision(Hero *entity)
  {
 
     int i, x1, x2, y1, y2;
