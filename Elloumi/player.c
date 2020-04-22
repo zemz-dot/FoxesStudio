@@ -32,3 +32,31 @@
     loadMap("map/map1.txt");
 
 }
+
+void drawplayer()
+{
+    /* Rectangle de destination à blitter */
+	SDL_Rect dest;
+
+    // On soustrait des coordonnées de notre héros, ceux du début de la map, pour qu'il colle
+    //au scrolling :
+	dest.x = player.x - map.startX;
+	dest.y = player.y - map.startY;
+	dest.w = PLAYER_WIDTH;
+	dest.h = PLAYER_HEIGTH;
+
+	/* Rectangle source à blitter */
+	SDL_Rect src;
+
+    //Pour connaître le X de la bonne frame à blitter, il suffit de multiplier
+    //la largeur du sprite par le numéro de la frame à afficher -> 0 = 0; 1 = 40; 2 = 80...
+	src.x = player.frameNumber * PLAYER_WIDTH;
+	src.y = 0;
+	src.w = PLAYER_WIDTH;
+	src.h = PLAYER_HEIGTH;
+
+	/* Blitte notre héros sur l'écran aux coordonnées x et y */
+
+	SDL_BlitSurface(player.sprite, &src, jeu.screen, &dest);
+
+}
