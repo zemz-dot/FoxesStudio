@@ -119,8 +119,7 @@ SDL_Surface * afficher_chrono(SDL_Surface *ecran , SDL_Surface *Background , SDL
 
 
 int collisionbb ( SDL_Rect posj , SDL_Rect posobj ) ; 
-int collisiontrigoinscrit ( SDL_Rect posj , SDL_Rect posobj ) ; 
-int CollisionTrigoCir (  SDL_Rect posj , SDL_Rect posobj );
+int collisionPP ( SDL_Rect posj , SDL_Rect posobj ) ; 
 
 void afficher_entite_secondaire (ent *E, SDL_Surface *ecran) ;
 
