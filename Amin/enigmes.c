@@ -1,96 +1,97 @@
-#include "enigmes.h"
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_mixer.h>
+#include <SDL/SDL_image.h>
+#include "enigme.h"
 
-void init_enigme(enigme *e)
+void init_enigme(enigme * e)
 {
-	e->Tab[0].solution=3;
+	e->p.x=0;
+	e->p.y=0;
+	e->img=NULL;
 
-	e->Tab[1].solution=1;
-
-	e->Tab[2].solution=2;
-
-	e->police = TTF_OpenFont("./Resources/Oswald-Heavy.ttf", 50);
-	e->num=-1;
-	e->correcte=-1;
-
-	SDL_Color couleureNoire ={0,0,0};
-
-	e->Tab[0].texteQ = TTF_RenderText_Blended (e->police,"Q1: **** ?", couleureNoire) ;
-	e->Tab[0].texteR = TTF_RenderText_Blended (e->police, "1- Reponse:1   2-Reponse:2    3-Reponse:3", couleureNoire) ;
-
-
-	e->Tab[1].texteQ = TTF_RenderText_Blended (e->police,"Q2: ****", couleureNoire) ;
-	e->Tab[1].texteR = TTF_RenderText_Blended (e->police, "1- Reponse:    2-Reponse:    3-Reponse:", couleureNoire) ;
-
-
-	e->Tab[2].texteQ = TTF_RenderText_Blended (e->police,"Q3: ****?", couleureNoire) ;
-	e->Tab[2].texteR = TTF_RenderText_Blended (e->police, "1- Reponse:   2-Reponse:    3-Reponse:", couleureNoire) ;
-
-	e->vrai = IMG_Load("./resources/true.png");
-	e->faux = IMG_Load("./resources/false.png");
-
-	e->posTF.x=800;
-	e->posTF.y=300;
 
 }
 
-void generationAleatoire(enigme *e)
+ void generate_afficher (SDL_Surface * screen  , char image [],enigme *e,int *alea)
 {
-	e->num=rand()%3;
-	printf("\nenumm=%d",e->num);
+	int test=*alea ;
+do{
+ *alea =1+rand()%3;
+}while(*alea==test) ;
+ sprintf(image ,"%d.jpg",*alea);
+e->img = IMG_Load(image);
+ SDL_BlitSurface(e->img,NULL,screen,&(e->p)) ;
+  SDL_Flip(screen) ;
 }
 
-void afficherEnigme(enigme *e,SDL_Surface *screen)
-{
-	e->posQ.x=130;
-	e->posQ.y=140;
-	e->posR.x=330;
-	e->posR.y=220;
-	SDL_BlitSurface (e->Tab[e->num].texteQ, NULL, screen, &e->posQ) ;
-	SDL_BlitSurface (e->Tab[e->num].texteR, NULL, screen, &e->posR) ;
-}
+ int solution_e (char image [])
+ {
+ 	int solution =0 ;
 
-void resoudreEnigme (enigme *e,SDL_Event event,SDL_Surface *screen)
+ 	if(strcmp(image,"1.jpg")==0)
+ 	{
+     solution =1 ;
+ 	}
+ 	else  	if(strcmp(image,"2.jpg")==0)
+ 	{
+ 		solution =2;
+
+ 	}
+ 	else 	if(strcmp(image,"3.jpg")==0)
+ 	{
+ 		solution =1;
+ 	}
+ 	return solution;
+ }
+
+int resolution (int * running,int *run )
 {
-	switch(event.key.keysym.sym)
+	SDL_Event event ;
+  int r=0 ;
+	SDL_PollEvent(&event);
+	switch(event.type)
 	{
-		case SDLK_a:
-			if(e->Tab[e->num].solution==1)
-			{
-				e->correcte=1;
-				SDL_BlitSurface(e->vrai,NULL,screen,&e->posTF);
-			}
-			else
-			{
-				e->correcte=0;
-				SDL_BlitSurface(e->faux,NULL,screen,&e->posTF);
-			}
-		break;
+		  case SDL_QUIT:
+			        *running= 0 ;
+                *run = 0;
+				break ;
 
-		case SDLK_b:
-			if(e->Tab[e->num].solution==2)
-			{
-				e->correcte=1;
-				SDL_BlitSurface(e->vrai,NULL,screen,&e->posTF);
-			}
-			else
-			{
-				e->correcte=0;
-				SDL_BlitSurface(e->faux,NULL,screen,&e->posTF);
-			}
-		break;
+       case SDL_KEYDOWN :
+            switch( event.key.keysym.sym )
+                {
+			  case  SDLK_a:
+			  r= 1;
+			   break ;
+			   case  SDLK_z :
+			   r= 2;
+			   break;
+			   case SDLK_e:
+			   r=3 ;
+			   break;
+			    }
+       break ;
 
-		case SDLK_c:
-			if(e->Tab[e->num].solution==3)
-			{
-				e->correcte=1;
-				SDL_BlitSurface(e->vrai,NULL,screen,&e->posTF);
-			}
-			else
-			{
-				e->correcte=0;
-				SDL_BlitSurface(e->faux,NULL,screen,&e->posTF);
-			}
-		break;
+
 	}
-
+  return r ;
 }
+
+ void afficher_resultat (SDL_Surface * screen,int s,int r,enigme *en)
+ {
+
+ 	if (r==s)
+ 	{
+ 		en->img=IMG_Load("00.jpg");
+ 		SDL_BlitSurface(en->img, NULL, screen, &(en->p)) ;
+        SDL_Flip(screen);
+ 	}
+ 	else
+ 	{
+ 		en->img=IMG_Load("11.jpg");
+ 		SDL_BlitSurface(en->img, NULL, screen, &(en->p)) ;
+        SDL_Flip(screen);
+ 	}
+ }
