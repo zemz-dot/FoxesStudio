@@ -4,7 +4,7 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_mixer.h>
 #include <SDL/SDL_image.h>
-#include "enigme.h"
+#include "enigmes.h"
 
 void init_enigme(enigme * e)
 {
