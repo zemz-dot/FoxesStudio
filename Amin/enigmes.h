@@ -1,29 +1,16 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <SDL/SDL.h>
-#include <SDL/SDL_image.h>
-#include <SDL/SDL_ttf.h>
+#include <SDL/SDL_mixer.h>
+#include <SDL/SDL_image.h>salem louled blh tanshouni bih laptop hedha ? w li aandou menou ken ynajm y9oli ala les defauts li fih ?
 
-#ifndef ENIGMES_H_INCLUDED
-#define ENIGMES_H_INCLUDED
 
-typedef struct {
-	SDL_Surface *texteQ, *texteR;
-	int solution;
-}question;
-
-typedef struct {
-	SDL_Surface *vrai,*faux;
-	SDL_Rect posTF;
-	int correcte;
-	question Tab[3];
-	TTF_Font *police;
-	SDL_Rect posQ,posR;
-	int num;
+typedef struct
+{
+ SDL_Surface * img;
+ SDL_Rect 	p;
 }enigme;
 
-void init_enigme(enigme *e);
-void generationAleatoire(enigme *e);
-void afficherEnigme(enigme *e,SDL_Surface *screen);
-void resoudreEnigme (enigme *e,SDL_Event event,SDL_Surface *screen);
-#endif
+void init_enigme(enigme * e) ;
+void  generate_afficher (SDL_Surface * screen  , char image [],enigme *e,int *alea) ;
+int solution_e (char image []) ;
+int resolution (int * running,int *run);
+void afficher_resultat (SDL_Surface * screen,int s,int r,enigme *en) ;
