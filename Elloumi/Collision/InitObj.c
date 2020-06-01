@@ -3,7 +3,7 @@
 #include  <stdlib.h>
 #include  <SDL/SDL.h>
 #include <SDL/SDL_image.h>
-#include "object.h"
+#include "obj.h"
 
 void initialiserObj( Objet *obj , char name[] , int x , int y ) 
 {
