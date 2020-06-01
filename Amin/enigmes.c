@@ -33,16 +33,16 @@ e->img = IMG_Load(image);
 
  	if(strcmp(image,"1.jpg")==0)
  	{
-     solution =1 ;
+     solution =2 ;
  	}
  	else  	if(strcmp(image,"2.jpg")==0)
  	{
- 		solution =2;
+ 		solution =1;
 
  	}
  	else 	if(strcmp(image,"3.jpg")==0)
  	{
- 		solution =1;
+ 		solution =3;
  	}
  	return solution;
  }
