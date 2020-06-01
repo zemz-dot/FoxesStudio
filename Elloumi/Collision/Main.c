@@ -2,7 +2,7 @@
 #include  <stdlib.h>
 #include  <SDL/SDL.h>
 #include <SDL/SDL_image.h>
-#include "object.h"
+#include "obj.h"
 #include "utility.h"
 
 int main()
