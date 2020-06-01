@@ -2,7 +2,7 @@
 #include  stdlib.h
 #include  SDLSDL.h
 #include SDLSDL_image.h
-#include "obj.h"
+#include "Obj.h"
 
 
 void affichageObj ( Objet obj , SDL_Surface screen) 
