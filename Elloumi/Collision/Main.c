@@ -11,7 +11,7 @@ int main()
 SDL_Surface *screen ,*back1,*back2,*back3 ; 
 Objet Obj, Obj1 ; 
 SDL_Event event ; 
-int done=0 , x,xx=0 ; 
+int done=0 , x,xx=0 ,tc=0 ; 
 perso.x=360;
 perso.y=200;
 
@@ -118,7 +118,7 @@ break ;
                  
 			 }
 x=collisionbb(Obj.position,Obj1.position) ;
-
+tc=CollisionTrigoCir(Obj.position,Obj1.position);
 if(x==1) 
 {
 SDL_FillRect ( screen ,  NULL ,  SDL_MapRGB ( screen -> format,  0,  0 , 0));
@@ -128,8 +128,14 @@ break ;
 
 		 }
 	 }
-
-
+     else   if(tc==1) 
+{
+SDL_FillRect ( screen ,  NULL ,  SDL_MapRGB ( screen -> format,  0,  0 , 0));
+SDL_Flip(screen) ; 
 }
+break ; 
+
+		 }
+	 }
 return 0 ; 
 }
