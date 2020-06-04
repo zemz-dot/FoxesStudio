@@ -8,7 +8,7 @@
 
 
 int collisionbb( SDL_Rect posj , SDL_Rect posobj ) ; 
-int collisiontrigoinscrit ( SDL_Rect posj , SDL_Rect posobj ) ; 
+int collisionpp ( SDL_SURFACE *background_mask,int x, int y) ; 
 int CollisionTrigoCir (  SDL_Rect posj , SDL_Rect posobj );
 
 
