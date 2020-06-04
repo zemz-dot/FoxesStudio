@@ -7,4 +7,4 @@
   /* Prototypes des fonctions utilisées */
   extern SDL_Surface *loadImage(char *name);
   extern void mapCollision(GameObject *entity);
-  extern int collide(GameObject *player, GameObject *monster);
+  extern int collidebb (GameObject *player, GameObject *monster);
